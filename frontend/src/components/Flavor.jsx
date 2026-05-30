@@ -29,7 +29,7 @@ export default function Flavor() {
         ))}
       </div>
       <div style={{ position: "relative", height: 188, overflow: "hidden" }}>
-        <img src="/assets/img-butterfly.jpg" alt="夏日杨梅"
+        <img src={`${import.meta.env.BASE_URL}assets/img-butterfly.jpg`} alt="夏日杨梅"
           style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
         <div style={{ position: "absolute", inset: 0,
           background: "linear-gradient(90deg,rgba(244,239,228,.92) 0%,rgba(244,239,228,.5) 42%,transparent 70%)" }} />
