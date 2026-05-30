@@ -37,8 +37,6 @@ jobs:
 
       - name: 构建前端
         working-directory: frontend
-        env:
-          VITE_API_BASE: ${{ secrets.VITE_API_BASE }}
         run: npm run build
 
       - name: 配置 GitHub Pages
