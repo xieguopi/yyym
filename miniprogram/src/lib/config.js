@@ -3,7 +3,7 @@
 const isProd = process.env.NODE_ENV === "production";
 
 export const API_BASE    = isProd
-  ? "https://yyym-api.onrender.com/api"
+  ? "https://yyym.onrender.com/api"
   : "http://localhost:8000/api";
 
 export const STATIC_BASE = isProd
