@@ -7,5 +7,5 @@ export const API_BASE    = isProd
   : "http://localhost:8000/api";
 
 export const STATIC_BASE = isProd
-  ? "https://xiegp.github.io/yyym/assets"
+  ? "https://xieguopi.github.io/yyym/assets"
   : "http://localhost:8000/static";
