@@ -1,0 +1,54 @@
+:root {
+  --paper: #f4efe4;
+  --paper-2: #ece4d3;
+  --paper-3: #e3d9c4;
+  --ink: #2c2a24;
+  --ink-soft: #6f685a;
+  --ink-faint: #a59c89;
+  --line: #ddd2bd;
+  --berry-deep: #7e242c;
+  --berry: #a72f35;
+  --berry-bright: #c2434a;
+  --leaf: #6f8a52;
+  --leaf-deep: #516b3c;
+  --sky: #bcd6cf;
+  --gold: #cf9f43;
+  --serif: "Noto Serif SC", serif;
+  --sans: "Noto Sans SC", system-ui, sans-serif;
+  --brush: "Ma Shan Zheng", "Noto Serif SC", serif;
+  --linen:
+    repeating-linear-gradient(0deg, rgba(120,100,60,.025) 0 1px, transparent 1px 4px),
+    repeating-linear-gradient(90deg, rgba(120,100,60,.022) 0 1px, transparent 1px 4px);
+  --accent: #a72f35;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--sans);
+  background: var(--paper);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+.scroll::-webkit-scrollbar { width: 0; height: 0; }
+.scroll { scrollbar-width: none; }
+
+::selection { background: rgba(167,47,53,.2); }
+
+@keyframes pulse {
+  0%   { box-shadow: 0 0 0 0 rgba(194,67,74,.5); }
+  70%  { box-shadow: 0 0 0 7px rgba(194,67,74,0); }
+  100% { box-shadow: 0 0 0 0 rgba(194,67,74,0); }
+}
+
+button { font-family: var(--sans); }

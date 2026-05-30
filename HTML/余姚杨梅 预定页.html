@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>余姚杨梅 · 限时预定</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&family=Ma+Shan+Zheng&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f4efe4;
+    --paper-2:#ece4d3;
+    --paper-3:#e3d9c4;
+    --ink:#2c2a24;
+    --ink-soft:#6f685a;
+    --ink-faint:#a59c89;
+    --line:#ddd2bd;
+    --berry-deep:#7e242c;
+    --berry:#a72f35;
+    --berry-bright:#c2434a;
+    --leaf:#6f8a52;
+    --leaf-deep:#516b3c;
+    --sky:#bcd6cf;
+    --gold:#cf9f43;
+    --serif:"Noto Serif SC", serif;
+    --sans:"Noto Sans SC", system-ui, sans-serif;
+    --brush:"Ma Shan Zheng", "Noto Serif SC", serif;
+    --linen:
+      repeating-linear-gradient(0deg, rgba(120,100,60,.025) 0 1px, transparent 1px 4px),
+      repeating-linear-gradient(90deg, rgba(120,100,60,.022) 0 1px, transparent 1px 4px);
+  }
+  *{ box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+  html,body{ margin:0; padding:0; }
+  body{
+    font-family:var(--sans);
+    background:#0d0c0a;
+    color:var(--ink);
+    display:flex; align-items:center; justify-content:center;
+    min-height:100vh;
+    background:
+      radial-gradient(1200px 700px at 50% -10%, #2a2722, #0d0c0a 70%);
+  }
+  #stage{ transform-origin:center center; }
+  /* hide scrollbars in the phone screen */
+  .scroll::-webkit-scrollbar{ width:0; height:0; }
+  .scroll{ scrollbar-width:none; }
+  ::selection{ background:rgba(167,47,53,.2); }
+  @keyframes pulse{ 0%{ box-shadow:0 0 0 0 rgba(194,67,74,.5);} 70%{ box-shadow:0 0 0 7px rgba(194,67,74,0);} 100%{ box-shadow:0 0 0 0 rgba(194,67,74,0);} }
+</style>
+</head>
+<body style="font-family: &quot;Noto Sans SC&quot;">
+  <div id="stage">
+    <div id="root"></div>
+  </div>
+
+  <template id="__bundler_thumbnail">
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <rect width="100" height="100" fill="#f4efe4"/>
+      <circle cx="50" cy="54" r="20" fill="#a72f35"/>
+      <path d="M50 34 q8 -10 18 -8 q-4 9 -14 11 Z" fill="#6f8a52"/>
+    </svg>
+  </template>
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+  <script src="image-slot.js"></script>
+  <script type="text/babel" src="frames/ios-frame.jsx"></script>
+  <script type="text/babel" src="tweaks-panel.jsx"></script>
+  <script type="text/babel" src="data.jsx"></script>
+  <script type="text/babel" src="sections.jsx"></script>
+  <script type="text/babel" src="checkout.jsx"></script>
+  <script type="text/babel" src="app.jsx"></script>
+  <script>
+    // Fit the phone to the viewport
+    function fitStage(){
+      const stage = document.getElementById('stage');
+      const inner = stage.firstElementChild;
+      if(!inner) return;
+      const w = 402, h = 874;
+      const margin = 24;
+      const scale = Math.min((window.innerWidth-margin*2)/w, (window.innerHeight-margin*2)/h, 1.15);
+      stage.style.transform = 'scale('+scale+')';
+    }
+    window.addEventListener('resize', fitStage);
+    window.__fitStage = fitStage;
+  </script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+page {
+  --paper: #f4efe4;
+  --paper-2: #ece4d3;
+  --paper-3: #e3d9c4;
+  --ink: #2c2a24;
+  --ink-soft: #6f685a;
+  --ink-faint: #a59c89;
+  --line: #ddd2bd;
+  --berry-deep: #7e242c;
+  --berry: #a72f35;
+  --berry-bright: #c2434a;
+  --leaf: #6f8a52;
+  --leaf-deep: #516b3c;
+  --sky: #bcd6cf;
+  --gold: #cf9f43;
+
+  background-color: #f4efe4;
+  font-family: -apple-system, "PingFang SC", "Helvetica Neue", sans-serif;
+  color: #2c2a24;
+}
+
+@keyframes pulse {
+  0%   { box-shadow: 0 0 0 0 rgba(194, 67, 74, 0.5); }
+  70%  { box-shadow: 0 0 0 7rpx rgba(194, 67, 74, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(194, 67, 74, 0); }
+}

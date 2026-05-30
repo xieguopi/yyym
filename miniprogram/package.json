@@ -1,0 +1,27 @@
+{
+  "name": "yyym-miniprogram",
+  "version": "1.0.0",
+  "private": true,
+  "description": "余姚杨梅限时预定小程序",
+  "scripts": {
+    "dev:weapp": "taro build --type weapp --watch",
+    "build:weapp": "taro build --type weapp"
+  },
+  "dependencies": {
+    "@tarojs/components": "3.6.36",
+    "@tarojs/react": "^3.6.36",
+    "@tarojs/runtime": "3.6.36",
+    "@tarojs/taro": "3.6.36",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@tarojs/cli": "3.6.36",
+    "@tarojs/mini-runner": "3.6.36",
+    "@tarojs/plugin-framework-react": "3.6.36",
+    "@tarojs/webpack5-runner": "3.6.36",
+    "babel-preset-taro": "3.6.36",
+    "sass": "^1.69.7",
+    "webpack": "^5.78.0"
+  }
+}
