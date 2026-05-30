@@ -2,7 +2,7 @@ import random
 import string
 import os
 from datetime import datetime
-from fastapi import FastAPI, Depends, HTTPException
+from fastapi import FastAPI, Depends, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from sqlalchemy.orm import Session
@@ -119,3 +119,33 @@ def get_stats(db: Session = Depends(get_db)):
     total_orders = db.query(func.count(models.Order.id)).scalar() or 0
     remaining = db.query(func.sum(models.Spec.stock)).scalar() or 0
     return {"remaining": remaining, "total_orders": total_orders}
+
+
+# ── 管理后台接口 ──────────────────────────────────────────────
+ADMIN_TOKEN = os.environ.get("ADMIN_TOKEN", "yyym2026")
+
+
+def check_admin(token: str = Query(..., description="管理员 token")):
+    if token != ADMIN_TOKEN:
+        raise HTTPException(status_code=401, detail="token 错误")
+
+
+@app.get("/api/admin/orders", response_model=list[schemas.OrderOut],
+         dependencies=[Depends(check_admin)])
+def admin_list_orders(db: Session = Depends(get_db)):
+    """列出所有预定订单（最新在前）"""
+    return db.query(models.Order).order_by(models.Order.id.desc()).all()
+
+
+@app.get("/api/admin/stats", dependencies=[Depends(check_admin)])
+def admin_stats(db: Session = Depends(get_db)):
+    """管理统计：总订单数、总金额、各规格销售量"""
+    total = db.query(func.count(models.Order.id)).scalar() or 0
+    revenue = db.query(func.sum(models.Order.total)).scalar() or 0
+    specs = db.query(models.Spec).all()
+    return {
+        "total_orders": total,
+        "total_revenue": revenue,
+        "specs": [{"name": s.name, "weight": s.weight,
+                   "stock": s.stock, "price": s.price} for s in specs],
+    }

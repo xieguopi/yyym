@@ -6,6 +6,18 @@ import Freshness from "./components/Freshness.jsx";
 import Offer from "./components/Offer.jsx";
 import OrderSheet from "./components/OrderSheet.jsx";
 import { Ico } from "./components/Icons.jsx";
+import Admin from "./pages/Admin.jsx";
+
+// 简单 hash 路由：/#/admin → 管理后台
+function useRoute() {
+  const [hash, setHash] = useState(window.location.hash);
+  useEffect(() => {
+    const handler = () => setHash(window.location.hash);
+    window.addEventListener("hashchange", handler);
+    return () => window.removeEventListener("hashchange", handler);
+  }, []);
+  return hash;
+}
 import { api } from "./lib/api.js";
 
 function BottomBar({ total, fav, setFav, onOrder }) {
@@ -39,6 +51,9 @@ function BottomBar({ total, fav, setFav, onOrder }) {
 }
 
 export default function App() {
+  const route = useRoute();
+  if (route === "#/admin") return <Admin />;
+
   const [specs, setSpecs] = useState([]);
   const [dates, setDates] = useState([]);
   const [stats, setStats] = useState(null);
