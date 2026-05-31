@@ -51,6 +51,7 @@ export default function Offer({ specs, specId, setSpecId, qty, setQty, stats }) 
         boxShadow: "0 18px 40px -28px rgba(60,40,20,.5)" }}>
         <div style={{ position: "relative", height: 200 }}>
           <img src={`${import.meta.env.BASE_URL}assets/img-cluster.jpg`} alt="精品杨梅礼盒"
+            loading="lazy" decoding="async"
             style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
           <div style={{ position: "absolute", top: 12, left: 12, display: "flex", gap: 7 }}>
             <span style={{ background: "var(--berry)", color: "#fff", fontSize: 10.5, fontWeight: 600,

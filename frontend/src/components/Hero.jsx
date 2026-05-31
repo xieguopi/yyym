@@ -27,6 +27,7 @@ export default function Hero() {
 
       <div style={{ position: "relative", height: 236, overflow: "hidden" }}>
         <img src={`${import.meta.env.BASE_URL}assets/img-branch.jpg`} alt="枝头杨梅"
+          fetchPriority="high" loading="eager" decoding="sync"
           style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
         <div style={{ position: "absolute", inset: 0,
           background: "linear-gradient(180deg,var(--paper) 0%,transparent 16%,transparent 72%,rgba(20,24,20,.42) 100%)" }} />
